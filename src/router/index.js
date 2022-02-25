@@ -6,6 +6,8 @@ import NotFound from '../views/error/NotFound'
 import Navbar from '../components/Navbar'
 import Login from '../views/auth/Login'
 import Contact from '../views/Contact'
+import UsersIndex from '../views/users/Index'
+import UsersShow from '../views/users/Show'
 
 function Router(props) {
   return (
@@ -20,6 +22,14 @@ function Router(props) {
 
         <Route path="/about"  element={<Navbar />}>
             <Route path="" element={<About />} />
+        </Route>
+
+        <Route path="/users" element={<Navbar />}>
+            <Route path="" element={<UsersIndex />} />
+        </Route>
+
+        <Route path="/users/:identifier" element={<Navbar />}>
+            <Route path="" element={<UsersShow />} />
         </Route>
 
         <Route path="/login" element={<Login />} />

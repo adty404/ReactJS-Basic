@@ -1,0 +1,41 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+function Show(props) {
+
+    const [user, setUser] = useState([])
+
+    // let id = useParams()
+    let {identifier} = useParams()
+
+    const getUser = async () => {
+        try {
+            let response = await axios.get(`https://jsonplaceholder.typicode.com/users/${identifier}`)
+            setUser(response.data)
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
+
+    useEffect(() => {
+      getUser()
+    }, [identifier])
+
+
+    return (
+        <div className="container">
+            <div className="card">
+                <div className="card-header">{user.username}</div>
+                <div className="card-body">
+                    <div>{user.username}</div>
+                    <div>{user.website}</div>
+                    <div>{user.phone}</div>
+                    <div>{user.email}</div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Show;
