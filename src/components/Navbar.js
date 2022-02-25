@@ -2,9 +2,12 @@ import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom';
 import { UserProvider } from '../context/User';
 import AuthenticatedUser from './AuthenticatedUser';
+import { useRecoilValue } from 'recoil';
+import { authUser } from '../store';
 
 export default function Navbar({children}) {
-  return (
+    const {user} = useRecoilValue(authUser)
+    return (
     <>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
@@ -36,6 +39,12 @@ export default function Navbar({children}) {
                             </NavLink>
                         </UserProvider>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/">{user.name}</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/theme">Theme Recoil</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -47,5 +56,5 @@ export default function Navbar({children}) {
 
         <Outlet />
     </>
-  );
+    );
 }

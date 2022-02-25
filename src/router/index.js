@@ -8,6 +8,7 @@ import Login from '../views/auth/Login'
 import Contact from '../views/Contact'
 import UsersIndex from '../views/users/Index'
 import UsersShow from '../views/users/Show'
+import ThemeRecoil from '../views/ThemeRecoil'
 
 function Router(props) {
   return (
@@ -30,6 +31,10 @@ function Router(props) {
 
         <Route path="/users/:identifier" element={<Navbar />}>
             <Route path="" element={<UsersShow />} />
+        </Route>
+
+        <Route path="/theme" element={<Navbar />}>
+            <Route path="" element={<ThemeRecoil />} />
         </Route>
 
         <Route path="/login" element={<Login />} />
