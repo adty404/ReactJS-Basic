@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom';
+import { UserProvider } from '../context/User';
+import AuthenticatedUser from './AuthenticatedUser';
 
 export default function Navbar({children}) {
   return (
@@ -26,6 +28,13 @@ export default function Navbar({children}) {
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/login">Login</NavLink>
+                        </li>
+                        <li className="nav-item">
+                        <UserProvider>
+                            <NavLink className="nav-link" to="/">
+                                <AuthenticatedUser /> {/*Beda component*/}
+                            </NavLink>
+                        </UserProvider>
                         </li>
                     </ul>
                 </div>
